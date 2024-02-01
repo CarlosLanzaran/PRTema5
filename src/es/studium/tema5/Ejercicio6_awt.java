@@ -4,15 +4,20 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.TextField;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Ejercicio6_awt implements WindowListener{
+public class Ejercicio6_awt implements WindowListener, ItemListener{
 	
 	
 	Frame ventana = new Frame ("Provincias");
 	
 	Choice choProvincias = new Choice();
+	
+	TextField txtGentilicio = new TextField(10);
 	
 	String[ ] provincias = {"Seleccione una provincia", "Álava","Albacete", "Alicante", "Almería", "Asturias", "Ávila","Badajoz",
 			"Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ciudad Real", "Córdoba", "La Coruña", "Cuenca", "Gerona",
@@ -20,6 +25,7 @@ public class Ejercicio6_awt implements WindowListener{
 			"Murcia", "Navarra", "Orense", "Palencia", "Las Palmas", "Pontevedra", "La Rioja", "Salamanca", "Segovia", "Sevilla", "Soria",
 			"Tarragona", "Santa Cruz de Tenerife", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza"};
 	
+	String[ ] gentilicios={"No ha elegido ninguna opción","Alavés/Alavesa o Babazorro/rra", "Albaceteño/ña o Albacetense", 			"Alicantino/na","Almeriense, Urcitano/na","Asturiano/na, Astur","Abulense, Avilés/esa", "Pacense, Badajocense, Badajoceño/ña", 			"Barcelonés/esa, Barcinonense", "Burgalés/esa", "Cacereño/ña", "Gaditano/na", "Cántabro/a","Castellonense", "Ciudadrealeño/ña", 			"Cordobés/esa","Coruñés", "Conquense", "Gerundense, Gironés/esa", "Granadino/na","Guadalajarño/ña, Caracense, Arriacense", 			"Guipuzcoano/na", "Onubense", "Oscense", "Balear", "Jaenés/esa, Jaenero/ro, Jienense, Giennense","Leonés/esa","Leridano","Lucense", 			"Madrileño/ña", "Malagueño/ña", "Murciano/na", "Navarro/rra", "Orensano/na", "Palentino/na", "Palmense", 			"Pontevedrés/esa","Riojano/a", "Salamanquino/na", "Segoviano/na", "Sevillano/na, Hispalense", 			"Soriano/na","Tarracconense/a","Santacrucero/ra", "Turolense", "Toledano/na", "Valenciano/na","Pucelano/na", "Vizcaíno/na", 			"Zamorano/na", "Zaragozano/na"};
 	
 	public Ejercicio6_awt() {
 		
@@ -40,6 +46,10 @@ public class Ejercicio6_awt implements WindowListener{
 		
 		ventana.add(choProvincias);
 		
+        choProvincias.addItemListener(this);
+
+		ventana.add(txtGentilicio);
+
 		ventana.setSize(450,170);
 		ventana.setBackground(Color.red);
 		ventana.setResizable(false);
@@ -55,9 +65,24 @@ public class Ejercicio6_awt implements WindowListener{
 		new Ejercicio6_awt();
 	}
 
-
-
-
+	@Override
+    public void itemStateChanged(ItemEvent e) {
+		
+		/*int posicion = 0;
+		
+		for(String provincia: provincias) {
+			
+			if(provincia.equals(e.getItem())) {
+				txtGentilicio.setText(gentilicios[posicion]);
+			}
+			else {
+				posicion ++;
+			}
+		}*/
+		
+		txtGentilicio.setText(gentilicios[choProvincias.getSelectedIndex()]);
+    }
+	
 	@Override
 	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub

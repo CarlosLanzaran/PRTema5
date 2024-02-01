@@ -6,14 +6,17 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Ejercicio4_awt implements WindowListener{
+public class Ejercicio4_awt implements WindowListener, ActionListener{
 	
-	Frame ventana = new Frame ("Aficiones");
+	Frame ventana = new Frame ("Aficiones\n");
 	
-	Button btnBoton = new Button ("          Comprobar          ");
+	Button btnBoton = new Button ("            	     Comprobar           	    ");
 	
 	Checkbox chkCorrer = new Checkbox ("Correr");
 	Checkbox chkNadar = new Checkbox ("Nadar");
@@ -25,6 +28,8 @@ public class Ejercicio4_awt implements WindowListener{
 	Checkbox chkTenis = new Checkbox ("Tenis");
 	Checkbox chkBaloncesto = new Checkbox ("Baloncesto");
 	Checkbox chkVela = new Checkbox ("Deportes de Vela");
+	
+	TextArea txaResultado = new TextArea(10,50);
 
 
 	public Ejercicio4_awt() {
@@ -43,9 +48,12 @@ public class Ejercicio4_awt implements WindowListener{
 		ventana.add(chkBaloncesto);
 		ventana.add(chkVela);
 		ventana.add(btnBoton);
-
-
-		ventana.setSize(280,150);
+		
+		ventana.add(txaResultado);
+		
+		btnBoton.addActionListener(this);
+		
+		ventana.setSize(440,300);
 		ventana.setBackground(Color.gray);
 		ventana.setResizable(false);
 		ventana.setLocationRelativeTo(null);
@@ -61,6 +69,51 @@ public static void main(String[] args) {
 	}
 
 
+@Override
+public void actionPerformed(ActionEvent e) {
+	
+	if(chkCorrer.getState()==true)
+	{
+		txaResultado.append("Correr\n");
+	}
+	if(chkNadar.getState())
+	{
+		txaResultado.append("Nadar\n");;
+	}
+	if(chkAndar.getState())
+	{
+		txaResultado.append("Andar\n");
+	}
+	if(chkLeer.getState())
+	{
+		txaResultado.append("Leer\n");
+	}
+	if(chkCine.getState())
+	{
+		txaResultado.append("Ir al cine\n");
+	}
+	if(chkBailar.getState())
+	{
+		txaResultado.append("Bailar\n");
+	}
+	if(chkFutbol.getState())
+	{
+		txaResultado.append("Fútbol\n");
+	}
+	if(chkTenis.getState())
+	{
+		txaResultado.append("Tenis\n");
+	}
+	if(chkBaloncesto.getState())
+	{
+		txaResultado.append("Baloncesto\n");
+	}
+	if(chkVela.getState())
+	{
+		txaResultado.append("Deportes de Vela\n");
+	}
+	
+}
 
 @Override
 public void windowOpened(WindowEvent e) {
@@ -87,7 +140,7 @@ public void windowClosed(WindowEvent e) {
 
 @Override
 public void windowIconified(WindowEvent e) {
-	// TODO Auto-generated method stub
+	
 	
 }
 

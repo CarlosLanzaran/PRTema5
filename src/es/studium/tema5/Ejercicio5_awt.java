@@ -9,10 +9,14 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Label;
 import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Ejercicio5_awt implements WindowListener{
+public class Ejercicio5_awt implements WindowListener, ActionListener{
 	
 	
 	
@@ -42,12 +46,17 @@ public class Ejercicio5_awt implements WindowListener{
 	Checkbox chkno = new Checkbox ("No", false, chgPintura);
 	
 	Button btnBoton = new Button ("Calcular presupuesto");
+	
+	TextField txtResultado = new TextField(10);
+
 
 
 
 	public Ejercicio5_awt() {
 		
 		ventana.addWindowListener(this);
+		
+		btnBoton.addActionListener(this);
 		
 		ventana.setLayout(new BorderLayout());
 		
@@ -69,12 +78,13 @@ public class Ejercicio5_awt implements WindowListener{
 		ventana.add("Center", pnlDatos);
 		
 		pnlBoton.add(btnBoton);
+		pnlBoton.add(txtResultado);
 		
 		ventana.add("South", pnlBoton);
 
 
 		ventana.setSize(450,170);
-		ventana.setBackground(Color.gray);
+		ventana.setBackground(Color.blue);
 		ventana.setResizable(false);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
@@ -87,7 +97,62 @@ public class Ejercicio5_awt implements WindowListener{
 
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		int presupuesto = 0;
+		if(chkDiesel.getState()==true) {
+			presupuesto = presupuesto + 8000;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chkGasolina.getState()==true) {
+			presupuesto = presupuesto + 7000;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chkHibrido.getState()==true) {
+			presupuesto = presupuesto + 9000;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chkElectrico.getState()==true) {
+			presupuesto = presupuesto + 8500;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chk3.getState()==true) {
+			presupuesto = presupuesto + 2000;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chk4.getState()==true) {
+			presupuesto = presupuesto + 3000;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chk5.getState()==true) {
+			presupuesto = presupuesto + 2500;
+		}
+		else {
+			presupuesto = presupuesto + 0;
+		}
+		if(chksi.getState()==true) {
+			presupuesto = presupuesto + 1500;
+		}
+		else {
+			presupuesto = presupuesto + 0;
 
+		}
+		txtResultado.setText(presupuesto + " €");
+	}
+	
 	@Override
 	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub

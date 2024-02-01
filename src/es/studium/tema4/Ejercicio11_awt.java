@@ -10,7 +10,7 @@ import java.awt.TextField;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Calculadora implements WindowListener
+public class Ejercicio11_awt
 {
 	Frame ventana = new Frame("Mi Calculadora");
 	Button btnUno = new Button("1");
@@ -32,12 +32,10 @@ public class Calculadora implements WindowListener
 	Button btnBorrar = new Button("CE");
 	TextField txtPantalla = new TextField(20);
 	
-	public Calculadora() {
+	public Ejercicio11_awt() {
 		
 		ventana.setSize(250,200);
 		
-		ventana.addWindowListener(this);
-
 		ventana.setLayout(new GridBagLayout());
 		
 		GridBagConstraints restricciones = new GridBagConstraints();
@@ -136,48 +134,7 @@ public class Calculadora implements WindowListener
 	}
 	public static void main(String[] args)
 	{
-		new Calculadora();		
+		new Ejercicio11_awt();		
 	}
-
-	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowClosing(WindowEvent e) {
-		
-		System.exit(0);
-	}
-
-	@Override
-	public void windowClosed(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeiconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowActivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

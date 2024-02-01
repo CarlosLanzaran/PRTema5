@@ -7,10 +7,12 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class Ejercicio3_awt implements WindowListener{
+public class Ejercicio3_awt implements WindowListener, ActionListener{
 
 	
 	Frame ventana = new Frame ("Conversión de temperaturas");
@@ -36,6 +38,10 @@ public class Ejercicio3_awt implements WindowListener{
 		ventana.add(btnBoton);
 		ventana.add(btnBoton2);
 		
+		btnBoton.addActionListener(this);
+		btnBoton2.addActionListener(this);
+
+
 		ventana.setSize(300,150);
 		ventana.setBackground(Color.gray);
 		ventana.setResizable(false);
@@ -96,6 +102,27 @@ public class Ejercicio3_awt implements WindowListener{
 	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent evento) {
+		
+		if(evento.getSource().equals(btnBoton)) {
+			
+			float celsius = Float.parseFloat(txtNombre.getText());
+			float resultado = (celsius *(9.0f / 5.0f)) + 32.0f;
+			txtNombre2.setText(resultado + "");
+			txtNombre.setText("");
+		}
+		else if(evento.getSource().equals(btnBoton2)) {
+			
+			float celsius = Float.parseFloat(txtNombre2.getText());
+			float resultado = (celsius - 32.0f) / (9.0f / 5.0f);
+			txtNombre.setText(resultado + "");
+			txtNombre2.setText("");
+
+		}
 	}
 
 }
